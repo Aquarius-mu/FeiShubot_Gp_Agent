@@ -338,16 +338,18 @@ send_card() {
 }
 
 update_card() {
-  [[ -z "$1" ]] && return
+  [[ -z "$1" ]] && return 1
   local t0; t0=$(now_ms)
-  local payload
+  local payload result code
   payload=$(jq -n --argjson card "$2" \
     '{"msg_type":"interactive","content":($card|tojson)}')
-  $LARK api PATCH "/open-apis/im/v1/messages/${1}" \
+  result=$($LARK api PATCH "/open-apis/im/v1/messages/${1}" \
     --data "$payload" \
     --as bot \
-    2>/dev/null
-  log "update_card: $(format_duration $(( $(now_ms)-t0 )))"
+    2>/dev/null)
+  code=$(printf '%s' "$result" | jq -r '.code // 0' 2>/dev/null)
+  log "update_card: $(format_duration $(( $(now_ms)-t0 ))) code=${code}"
+  [[ "$code" == "0" ]]
 }
 
 # ══════════════════════════════════════════════════════════
@@ -536,7 +538,7 @@ handle_message() {
   fi
 
   if [[ -n "$reply_msg_id" ]]; then
-    update_card "$reply_msg_id" "$final_card"
+    update_card "$reply_msg_id" "$final_card" || send_card "$message_id" "$final_card" >/dev/null
   else
     send_card "$message_id" "$final_card" >/dev/null
   fi
