@@ -407,22 +407,29 @@ print("hello")
 
 ### Emoji
 
-飞书专属 Emoji 用 `:KEY:` 语法，卡片内 `lark_md` 可用。
+#### ⚠️ 严格规则
 
-#### 常用状态 / 工作流
+1. **只能使用[官方列表](https://open.feishu.cn/document/server-docs/im-v1/message-reaction/emojis-introduce)中的 key**，未收录的 key（如 `:WAITING:`、`:PROCESSING:`）会渲染成纯文本，禁止使用。
+2. **key 大小写必须与官方完全一致**（如 `Fire` 不是 `FIRE`，`Trophy` 不是 `TROPHY`，`Shrug` 不是 `SHRUG`）。
+3. **`<text_tag>` 内部不渲染 `:KEY:`**，须改用 Unicode emoji（如 `✅`）。
+4. `:KEY:` 仅在 `lark_md` 普通文本区域生效。
+
+#### 发版通知常用
 ```
-:DONE:        :OK:           :LGTM:         :OnIt:
-:OneSecond:   :ERROR:        :THUMBSUP:     :ThumbsDown:
-:APPLAUSE:    :CLAP:         :MUSCLE:       :SALUTE:
-:HIGHFIVE:    :FISTBUMP:     :FINGERHEART:  :WAVE:
+:DONE:        :OK:           :THUMBSUP:     :APPLAUSE:
+:PARTY:       :FIREWORKS:    :MUSCLE:       :THANKS:
+:Trophy:      :Fire:         :Hundred:      :CheckMark:
 ```
 
-#### 工作 & 通知
+#### 工作 & 状态
 ```
-:HEADSET:     :Typing:       :MeMeMe:       :Sigh:
-:LEMON:       :Get:          :Pin:          :Alarm:
+:LGTM:        :OnIt:         :OneSecond:    :Get:
+:ERROR:        :CrossMark:    :Pin:          :Alarm:
 :Loudspeaker: :OKR:          :Yes:          :No:
-:AWESOMEN:    :VRHeadset:    :YouAreTheBest:
+:HEADSET:     :Typing:       :MeMeMe:       :Sigh:
+:Lemon:       :AWESOMEN:     :VRHeadset:    :YouAreTheBest:
+:SALUTE:      :HIGHFIVE:     :FISTBUMP:     :FINGERHEART:
+:WAVE:        :ThumbsDown:
 ```
 
 #### 表情 - 正面
@@ -431,15 +438,17 @@ print("hello")
 :WINK:        :PROUD:        :WITTY:        :JOYFUL:
 :WOW:         :BLUSH:        :HUG:          :BeamingFace:
 :Delighted:   :ThanksFace:   :SaluteFace:   :PRAISE:
+:CLAP:        :JIAYI:        :FACEPALM:     :YEAH:
 ```
 
 #### 表情 - 负面 / 搞怪
 ```
 :CRY:         :SOB:          :ANGRY:        :SHOCKED:
-:FACEPALM:    :SHRUG:        :THINKING:     :DIZZY:
-:SLEEP:       :YAWN:         :SICK:         :SWEAT:
-:EMBARRASSED: :SKULL:        :RAINBOWPUKE:  :PUKE:
-:ClownFace:   :ColdSweat:    :SMUG:         :SILENT:
+:Shrug:       :THINKING:     :DIZZY:        :SLEEP:
+:YAWN:        :SICK:         :SWEAT:        :EMBARRASSED:
+:SKULL:       :RAINBOWPUKE:  :PUKE:         :ClownFace:
+:ColdSweat:   :SMUG:         :SILENT:       :TERROR:
+:PETRIFIED:   :BETRAYED:     :WRONGED:
 ```
 
 #### 庆祝 & 节日
@@ -447,7 +456,8 @@ print("hello")
 :PARTY:       :FIREWORKS:    :REDPACKET:    :FORTUNE:
 :FIRECRACKER: :XmasTree:     :XmasHat:      :Snowman:
 :Pumpkin:     :Mooncake:     :MoonRabbit:   :Partying:
-:StickyRiceBalls:            :JubilantRabbit:
+:StickyRiceBalls:            :JubilantRabbit:  :LUCK:
+:FullMoonFace: :GoGoGo:      :HappyDragon:
 ```
 
 #### 物品 & 食物
@@ -456,21 +466,23 @@ print("hello")
 :GIFT:        :BOMB:         :Fire:         :Trophy:
 :Coffee:      :BubbleTea:    :Drumstick:    :Pepper:
 :CUCUMBER:    :CANDIEDHAWS:  :Soccer:       :Basketball:
-:Music:       :CLEAVER:
+:Music:       :CLEAVER:      :EatingFood:   :LIPS:
 ```
 
-#### 状态指示
+#### 状态指示（勿频繁使用，仅状态场景）
 ```
 :GeneralDoNotDisturb:        :GeneralInMeetingBusy:
 :StatusReading:              :GeneralWorkFromHome:
 :GeneralBusinessTrip:        :StatusInFlight:
 :GeneralSun:                 :GeneralMoonRest:
-:StatusFlashOfInspiration:
+:StatusFlashOfInspiration:   :Status_PrivateMessage:
+:GeneralTravellingCar:       :StatusBus:
 ```
 
-Unicode Emoji 在标题、正文中直接使用：
+#### Unicode Emoji（标题、text_tag 内、header subtitle 中使用）
 ```
 🎉 ✅ ❌ ⚠️ 🚀 📦 💬 ⏳ 🔔 📝 🛠️ 🔍 👋 🎯 💡 🌟
+👥 📅 🤖 🏆 🔥 💯 📣 🎁 ☕ 🍺
 ```
 
 > **推荐风格**：标题用 Unicode emoji 增强视觉，状态/反馈用飞书 `:DONE:` `:LGTM:` 等专属语法
