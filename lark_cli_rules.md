@@ -184,8 +184,8 @@ lark-cli base +record-list --base-token BvXLbhpxPaybGNsfCTucV6VfnDb \
 
 ## 5. 执行效率原则
 
-1. **先查缓存**：执行前先读 `~/feishu_bot/cache.json`，已有的群 ID、人员 open_id、bitable token 无需重复查询。缓存包含：
-   - 版本发版群 chat_id（按版本号索引）
+1. **先查缓存**：执行前先读 `~/feishu_bot/cache/groups.json` 和 `users.json`，已有的群 ID、人员 open_id、bitable token 无需重复查询。缓存包含：
+   - **发版通知群 chat_id 固定**：`oc_36e42f5d801480d9ab554edbc230dcb9`，群名随版本变（MGame654.0发版本 → MGame656.0发版本），**无需每次搜索**，直接用此 chat_id
    - 王同乐、张超的 open_id
    - MLA配置确认表的 spreadsheet_token、wiki_token
    - 已解析过的各版本 bitable base_token + table_id
