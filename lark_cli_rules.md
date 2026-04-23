@@ -291,6 +291,63 @@ output = result.stdout.decode()
 
 ---
 
+### 6.6 lark_md Emoji Key 使用规则
+
+**严格规定**：lark_md 中 `:KEY:` 格式的 emoji 只能使用[官方列表](https://open.feishu.cn/document/server-docs/im-v1/message-reaction/emojis-introduce)中的 key，**禁止使用未经验证的名称**（如 `:WAITING:`、`:PROCESSING:` 等，会渲染成纯文本）。
+
+**语法**：`:KEY:`，key 大小写必须与官方列表完全一致。
+
+**限制**：`:KEY:` 只在 lark_md **普通文本**中生效，`<text_tag>` 内部不渲染，须改用 Unicode emoji。
+
+#### 常用 emoji key 速查（发版通知场景）
+
+| 场景 | Key | 效果描述 |
+|------|-----|---------|
+| 完成/已发好 | `:DONE:` | ✅ 对勾 |
+| 点赞/辛苦了 | `:THUMBSUP:` | 👍 大拇指 |
+| 确认/知悉 | `:OK:` | OK |
+| 感谢 | `:THANKS:` | 感谢 |
+| 鼓掌 | `:APPLAUSE:` | 鼓掌 |
+| 加油 | `:MUSCLE:` | 💪 肌肉 |
+| 庆祝 | `:PARTY:` | 🎉 派对 |
+| 火 | `:Fire:` | 🔥（注意大小写）|
+| 奖杯 | `:Trophy:` | 🏆（注意大小写）|
+| 警告 | `:ERROR:` | ❌ |
+| 100分 | `:Hundred:` | 💯（注意大小写）|
+| 检查 | `:CheckMark:` | ✔️（注意大小写）|
+
+#### 完整官方 key 列表（按大小写原样使用）
+
+```
+OK, THUMBSUP, THANKS, MUSCLE, FINGERHEART, APPLAUSE, FISTBUMP, JIAYI, DONE,
+SMILE, BLUSH, LAUGH, SMIRK, LOL, FACEPALM, LOVE, WINK, PROUD, WITTY, SMART,
+SCOWL, THINKING, SOB, CRY, ERROR, NOSEPICK, HAUGHTY, SLAP, SPITBLOOD, TOASTED,
+GLANCE, DULL, INNOCENTSMILE, JOYFUL, WOW, TRICK, YEAH, ENOUGH, TEARS,
+EMBARRASSED, KISS, SMOOCH, DROOL, OBSESSED, MONEY, TEASE, SHOWOFF, COMFORT,
+CLAP, PRAISE, STRIVE, XBLUSH, SILENT, WAVE, WHAT, FROWN, SHY, DIZZY, LOOKDOWN,
+CHUCKLE, WAIL, CRAZY, WHIMPER, HUG, BLUBBER, WRONGED, HUSKY, SHHH, SMUG,
+ANGRY, HAMMER, SHOCKED, TERROR, PETRIFIED, SKULL, SWEAT, SPEECHLESS, SLEEP,
+DROWSY, YAWN, SICK, PUKE, BETRAYED, HEADSET,
+EatingFood, MeMeMe, Sigh, Typing, Lemon, Get, LGTM, OnIt, OneSecond,
+VRHeadset, YouAreTheBest, SALUTE, SHAKE, HIGHFIVE, UPPERLEFT, ThumbsDown,
+SLIGHT, TONGUE, EYESCLOSED, RoarForYou, CALF, BEAR, BULL, RAINBOWPUKE,
+ROSE, HEART, PARTY, LIPS, BEER, CAKE, GIFT, CUCUMBER, Drumstick, Pepper,
+CANDIEDHAWS, BubbleTea, Coffee, Yes, No, OKR, CheckMark, CrossMark,
+MinusOne, Hundred, AWESOMEN, Pin, Alarm, Loudspeaker, Trophy, Fire, BOMB,
+Music, XmasTree, Snowman, XmasHat, FIREWORKS, 2022, REDPACKET, FORTUNE,
+LUCK, FIRECRACKER, StickyRiceBalls, HEARTBROKEN, POOP, StatusFlashOfInspiration,
+18X, CLEAVER, Soccer, Basketball, GeneralDoNotDisturb, Status_PrivateMessage,
+GeneralInMeetingBusy, StatusReading, StatusInFlight, GeneralBusinessTrip,
+GeneralWorkFromHome, StatusEnjoyLife, GeneralTravellingCar, StatusBus,
+GeneralSun, GeneralMoonRest, MoonRabbit, Mooncake, JubilantRabbit, TV,
+Movie, Pumpkin, BeamingFace, Delighted, ColdSweat, FullMoonFace, Partying,
+GoGoGo, ThanksFace, SaluteFace, Shrug, ClownFace, HappyDragon
+```
+
+> ⚠️ 注意：部分 key 混合大小写（如 `Trophy`、`Fire`、`CheckMark`），必须原样使用，全大写版本无效。
+
+---
+
 ### 6.3 schema 2.0 不支持 `note` tag
 
 使用 `note` 会报错：`cards of schema V2 no longer support this capability; unsupported tag note`（错误码 200861）
