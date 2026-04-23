@@ -22,7 +22,7 @@
         "tag": "div",
         "text": {
           "tag": "lark_md",
-          "content": "👥 **版本负责人知悉**\n<at id=\"ou_atlas\">(Atlas)</at>  <at id=\"ou_scott\">(Scott)</at>\n请知悉～"
+          "content": "👥 **版本负责人知悉**\n<at id=\"ou_atlas\">王同乐(Atlas)</at>  <at id=\"ou_scott\">张超(Scott)</at>\n请知悉～"
         }
       },
       {"tag": "hr"},
@@ -36,7 +36,7 @@
       {"tag": "hr"},
       {
         "tag": "div",
-        "text": {"tag": "lark_md", "content": "<font color=grey>:PROCESSING: {{version}} · {{env}} · 由 Claude Bot 自动发送</font>"}
+        "text": {"tag": "lark_md", "content": "<font color=grey>🤖 {{version}} · {{env}} · 由 Claude Bot 自动发送</font>"}
       }
     ]
   }
